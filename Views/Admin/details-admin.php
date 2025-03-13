@@ -16,7 +16,7 @@
         <div class="border p-4">
             <div class="d-flex align-items-center mb-3">
                 <div class="me-3">
-                    <img src="/Public/Assets/Images/<?php echo htmlspecialchars($admin['avatar']); ?>" 
+                    <img src="/Assets/Images/<?php echo htmlspecialchars($admin['avatar']); ?>" 
                         alt="Avatar" class="rounded-circle" width="120" height="120">
                 </div>
                 <div class="flex-grow-1">
