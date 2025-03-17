@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin List</title>
+    <title><?php echo($danhSachDuLieu == 'admin') ? 'Admin List' : 'User List'; ?></title>
 </head>
 
 <body class="">
@@ -48,14 +48,24 @@
                             $newOrder = ($sort === $newSort) ? ($order === 'asc' ? 'desc' : 'asc') : 'asc';
                         ?>
 
-                    <th class="px-2"> <a
-                            href="?sort=id&order=<?php echo $newSort === 'id' ? $newOrder : 'asc'; ?>">ID</a>
-                    </th>
-                    <th class="px-3"><a
-                            href="?sort=name&order=<?php echo $newSort === 'name' ? $newOrder : 'asc'; ?>">Name</a></th>
-                    <th class="px-3"><a
-                            href="?sort=email&order=<?php echo $newSort === 'email' ? $newOrder : 'asc'; ?>">Email</a>
-                    </th>
+<th class="px-2 ">
+    <a href="?sort=id&order=<?php echo $newSort === 'id' ? $newOrder : 'asc'; ?>"
+       class="text-danger text-decoration-none">
+        ID  <i class="bi bi-sort-down"></i>
+    </a>
+</th>
+<th class="px-3 ">
+    <a href="?sort=name&order=<?php echo $newSort === 'name' ? $newOrder : 'asc'; ?>"
+       class="text-danger text-decoration-none">
+         Name <i class="bi bi-person"></i>
+    </a>
+</th>
+<th class="px-3 ">
+    <a href="?sort=email&order=<?php echo $newSort === 'email' ? $newOrder : 'asc'; ?>"
+       class="text-danger text-decoration-none">
+       Email  <i class="bi bi-envelope"></i>
+    </a>
+</th>
                     <?php
                         if ($danhSachDuLieu == "user") {
                                 echo '
@@ -65,8 +75,9 @@
                             } else {
                             ?>
                     <th class="px-3">
-                        <a href="?sort=role_type&order=<?php echo $newSort === 'role_type' ? $newOrder : 'asc'; ?>">
-                            Role_Admin
+                        <a href="?sort=role_type&order=<?php echo $newSort === 'role_type' ? $newOrder : 'asc'; ?>"   
+                        class="text-danger text-decoration-none">
+                            Role_Admin <i class="bi bi-person"></i>
                         </a>
                     </th>
                     <?php

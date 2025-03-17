@@ -47,6 +47,13 @@ class AdminController
 
         if ($adminId) {
             $admin = $this->adminService->getAdminById($adminId);
+
+        }
+        if($adminId == null || $admin == null) {
+            // die('Thông tin người dùng không tồn tại!');
+            $send = 'Admin not found';
+            header("Location: /admin/list-admin?&message=$send");
+            exit;
         }
         include '../Views/Admin/details-admin.php';
     }
@@ -241,8 +248,12 @@ class AdminController
         $u  = [];
         $id = $_GET['id'] ?? $_SESSION['account']['id'] ?? null;
 
-        if ($id) {
-            $u = $this->userService->getById($id);
+        $u = $this->userService->getById($id);
+        if ($u === null || $id == null) {
+            // die('Không tồn tại thông tin!');
+            $send = 'User not found';
+            header("Location: /admin/list-user?&message=$send");
+            exit;
         }
         include '../Views/User/details.php';
     }
@@ -256,10 +267,12 @@ class AdminController
         }
 
         try {
-            $admin = $this->userService->getById($id);
+            $user = $this->userService->getById($id);
 
-            if (! $admin) {
-                die("User not found");
+            if (! $user) {
+                $send = 'User not found or cannot be update';
+                header("Location: /admin/list-user?&message=$send");
+                exit;
             }
         } catch (Exception $e) {
             die("Error: " . $e->getMessage());
@@ -396,7 +409,6 @@ class AdminController
             $currentPage = 1;
         }
 
-        // $danhSachDuLieu = 'user';
         include '../Views/User/search.php';
     }
 
@@ -413,7 +425,10 @@ class AdminController
                     header("Location: /admin/list-user?&message=$send");
                     exit();
                 }
-                $_SESSION['errors'] = ['error' => 'USer not found or cannot be deleted'];
+                // $_SESSION['errors'] = ['error' => 'User not found or cannot be deleted'];
+                $send = 'User not found or cannot be update';
+                header("Location: /admin/list-user?&message=$send");
+                exit;
             }
         } catch (Exception $e) {
             $_SESSION['errors'] = ['exception' => "Failed to delete admin: " . $e->getMessage()];

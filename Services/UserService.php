@@ -29,9 +29,9 @@ class UserService
         if (! $this->help->validateRequired($data->name)) {
             $errors['name'] = "Name is required";
         }
-        if (! $this->help->validateRequired($data->facebook_id)) {
-            $errors['facebook_id'] = "FB is required";
-        }
+        // if (! $this->help->validateRequired($data->facebook_id)) {
+        //     $errors['facebook_id'] = "FB is required";
+        // }
 
         if (! $this->help->validateRequired($data->email)) {
             $errors['email'] = "Email is required";
@@ -191,9 +191,9 @@ class UserService
             $errors['status'] = "Status is required";
         }
 
-        if (! $this->help->validateRequired($data['facebook_id'])) {
-            $errors['facebook_id'] = "FB is required";
-        }
+        // if (! $this->help->validateRequired($data['facebook_id'])) {
+        //     $errors['facebook_id'] = "FB is required";
+        // }
 
         if (! $this->help->validateRequired($data['email'])) {
             $errors['email'] = "Email is required";
